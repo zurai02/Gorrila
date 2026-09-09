@@ -1,0 +1,375 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --paper:      #ece3cf;
+  --paper-dark: #ddd0ab;
+  --ink:        #221f19;
+  --ink-soft:   #4a4436;
+  --pine:       #2f4a34;
+  --clay:       #9c4a2e;
+  --brass:      #93783f;
+  --rule:       #c7b892;
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Serif 4', Georgia, serif;
+  font-size:17px;
+}
+
+.sheet{
+  max-width:680px;
+  margin:0 auto;
+  padding:0 1.6rem;
+}
+
+.wide{
+  max-width:920px;
+  margin:0 auto;
+  padding:0 1.6rem;
+}
+
+/* ── header / plate ── */
+.plate{
+  position:relative;
+  padding:3.5rem 0 0;
+}
+
+.plate-frame{
+  max-width:920px;
+  margin:0 auto;
+  padding:0 1.6rem;
+}
+
+.plate-image-wrap{
+  position:relative;
+  border:1px solid var(--ink);
+  padding:10px;
+  background:var(--paper);
+}
+
+.plate-image{
+  width:100%;
+  height:56vh;
+  min-height:340px;
+  object-fit:cover;
+  display:block;
+  filter:sepia(28%) saturate(65%) brightness(88%) contrast(105%);
+  transition:filter 0.5s ease, transform 6s ease;
+}
+
+.plate-image-wrap:hover .plate-image{
+  filter:sepia(14%) saturate(80%) brightness(94%) contrast(105%);
+  transform:scale(1.015);
+}
+
+.plate-caption{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding:0.7rem 0.2rem 0 0.2rem;
+  font-size:0.78rem;
+  color:var(--ink-soft);
+  font-style:italic;
+}
+
+.plate-number{
+  font-style:normal;
+  letter-spacing:0.02em;
+}
+
+.title-block{
+  max-width:680px;
+  margin:2.6rem auto 0;
+  padding:0 1.6rem 3rem;
+  border-bottom:1px solid var(--rule);
+}
+
+h1{
+  font-family:'Fraunces', serif;
+  font-weight:700;
+  font-size:clamp(2.6rem,7vw,4.2rem);
+  line-height:0.98;
+  color:var(--ink);
+}
+
+h1 .sci{
+  display:block;
+  font-style:italic;
+  font-weight:500;
+  font-size:0.42em;
+  color:var(--pine);
+  margin-top:0.6rem;
+}
+
+.dek{
+  margin-top:1.4rem;
+  max-width:46ch;
+  color:var(--ink-soft);
+  font-size:1.05rem;
+  line-height:1.7;
+}
+
+.status-line{
+  margin-top:1.6rem;
+  display:flex;
+  align-items:center;
+  gap:0.7rem;
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-style:italic;
+  color:var(--clay);
+  font-size:1.05rem;
+}
+
+.status-mark{
+  width:11px;height:11px;
+  border-radius:50%;
+  background:var(--clay);
+  flex-shrink:0;
+}
+
+/* ── section scaffold ── */
+section{
+  padding:3.4rem 0;
+  border-bottom:1px solid var(--rule);
+}
+
+section:last-of-type{border-bottom:none;}
+
+.entry{
+  display:grid;
+  grid-template-columns:64px 1fr;
+  gap:1.2rem;
+}
+
+.entry-num{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:500;
+  font-size:1.3rem;
+  color:var(--brass);
+  padding-top:0.15rem;
+}
+
+.entry-body h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:1.7rem;
+  color:var(--ink);
+  margin-bottom:1rem;
+  line-height:1.15;
+}
+
+.entry-body p{
+  color:var(--ink-soft);
+  line-height:1.8;
+  max-width:56ch;
+}
+
+.entry-body p + p{margin-top:1rem;}
+
+/* ── threats as a running list ── */
+.threat-list{margin-top:0.4rem;}
+
+.threat-row{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:1.4rem;
+  padding:1.1rem 0.8rem;
+  margin:0 -0.8rem;
+  border-top:1px solid var(--rule);
+  border-radius:2px;
+  transition:background 0.25s ease, padding-left 0.25s ease;
+}
+
+.threat-row:first-child{border-top:none;padding-top:0;}
+
+.threat-row:hover{
+  background:rgba(156,74,46,0.06);
+  padding-left:1.3rem;
+}
+
+.threat-name{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-style:italic;
+  color:var(--clay);
+  font-size:1.02rem;
+  line-height:1.4;
+  transition:color 0.25s ease;
+}
+
+.threat-row:hover .threat-name{
+  color:var(--ink);
+}
+
+.threat-row p{
+  color:var(--ink-soft);
+  font-size:0.96rem;
+  line-height:1.7;
+}
+
+/* ── population ruler ── */
+.ruler-wrap{margin-top:2.2rem;}
+
+.ruler-label{
+  display:flex;
+  justify-content:space-between;
+  font-size:0.75rem;
+  color:var(--ink-soft);
+  font-family:'Source Serif 4',serif;
+  letter-spacing:0.02em;
+  margin-bottom:0.4rem;
+}
+
+.ruler{
+  position:relative;
+  height:3px;
+  background:var(--rule);
+  margin-bottom:0.5rem;
+}
+
+.ruler-fill{
+  position:absolute;
+  left:0;top:0;bottom:0;
+  background:var(--pine);
+  width:0%;
+  transition:width 1.4s cubic-bezier(.2,.8,.2,1);
+}
+
+.ruler-note{
+  font-size:0.86rem;
+  color:var(--ink-soft);
+  font-style:italic;
+  margin-top:0.8rem;
+  max-width:50ch;
+}
+
+.fact-grid{
+  margin-top:2.4rem;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.6rem 1.2rem;
+}
+
+.fact{
+  border-top:2px solid var(--pine);
+  padding-top:0.6rem;
+  transition:transform 0.25s ease, border-color 0.25s ease;
+}
+
+.fact:hover{
+  transform:translateY(-3px);
+  border-color:var(--clay);
+}
+
+.fact-num{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:1.7rem;
+  color:var(--ink);
+  display:block;
+  line-height:1.05;
+  transition:color 0.25s ease;
+}
+
+.fact:hover .fact-num{
+  color:var(--clay);
+}
+
+.fact-label{
+  font-size:0.78rem;
+  color:var(--ink-soft);
+  margin-top:0.25rem;
+  line-height:1.4;
+}
+
+/* ── protection: marginalia list ── */
+.protect-list{
+  counter-reset:p;
+  margin-top:0.4rem;
+}
+
+.protect-item{
+  counter-increment:p;
+  display:grid;
+  grid-template-columns:64px 1fr;
+  gap:1.2rem;
+  padding:1.3rem 0.8rem;
+  margin:0 -0.8rem;
+  border-top:1px solid var(--rule);
+  border-radius:2px;
+  transition:background 0.25s ease, padding-left 0.25s ease;
+}
+
+.protect-item:first-child{border-top:none;padding-top:0;}
+
+.protect-item:hover{
+  background:rgba(47,74,52,0.06);
+  padding-left:1.3rem;
+}
+
+.protect-item::before{
+  content:counter(p, upper-roman);
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:500;
+  color:var(--brass);
+  font-size:1.1rem;
+  transition:color 0.25s ease;
+}
+
+.protect-item:hover::before{
+  color:var(--pine);
+}
+
+.protect-item h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:1.08rem;
+  color:var(--ink);
+  margin-bottom:0.35rem;
+  transition:color 0.25s ease;
+}
+
+.protect-item:hover h3{
+  color:var(--pine);
+}
+
+.protect-item p{
+  color:var(--ink-soft);
+  font-size:0.95rem;
+  line-height:1.7;
+}
+
+/* ── colophon ── */
+.colophon{
+  padding:2.6rem 0 3.5rem;
+  text-align:center;
+}
+
+.colophon p{
+  font-size:0.85rem;
+  color:var(--ink-soft);
+  font-style:italic;
+}
+
+.colophon .mark{
+  font-family:'Fraunces',serif;
+  font-style:normal;
+  font-weight:700;
+  color:var(--pine);
+  font-size:1rem;
+  margin-bottom:0.6rem;
+}
+
+@media (max-width:560px){
+  .entry{grid-template-columns:40px 1fr;}
+  .threat-row{grid-template-columns:1fr;gap:0.4rem;}
+  .protect-item{grid-template-columns:32px 1fr;}
+  .fact-grid{grid-template-columns:1fr 1fr;}
+}
